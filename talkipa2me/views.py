@@ -1,5 +1,9 @@
+from django.shortcuts import render
 from django.views.generic import TemplateView
 
 
-class Home(TemplateView):
-    template_name = 'home.html'
+class Index(TemplateView):
+    template_name = 'index.html'
+
+    def post(self, request):
+        render(request, "index.html", {'text': "hewy"})

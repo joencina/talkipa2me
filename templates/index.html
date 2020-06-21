@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Talk IPA 2 Me!{% endblock title %}
+{% block content %}
+    <div class="container has-text-centered">
+        <nav class="panel">
+            <p class="panel-heading">
+                Enter your English text below
+            </p>
+         <form method="post">
+             {% csrf_token %}
+            <div class="panel-block">
+                <div class="control">
+                    <textarea class="textarea is-primary" placeholder="Over here!"></textarea>
+                </div>
+            </div>
+            <div class="panel-block">
+                <p class="has-text-justified">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet animi commodi dolores eligendi, expedita explicabo harum impedit in iste libero molestiae natus nobis non repellendus reprehenderit soluta temporibus voluptates!</p>
+            </div>
+
+            <div class="panel-block">
+                <div class="column"></div>
+                    <button class="button is-primary is-outlined" type="submit">
+                    Get text in IPA {{ text }}
+                </button>
+                <div class="column" ></div>
+
+            </div>
+             </form>
+        </nav>
+    </div>
+    {% endblock content %}
