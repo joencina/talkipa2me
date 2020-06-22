@@ -1,4 +1,6 @@
 from django.contrib.auth import get_user_model
+from django.contrib.staticfiles import finders
+from django.contrib.staticfiles.storage import staticfiles_storage
 from pytest import mark
 
 
@@ -16,3 +18,5 @@ def test_admin_response(client):
 @mark.django_db()
 def test_database():
     get_user_model().objects.all().exists()
+
+
