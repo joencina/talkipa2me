@@ -1,9 +1,16 @@
+import environ
+from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.views.generic import FormView
-
+from os import path
 from talkipa2me.forms import IndexForm, IssuesForm
 from talkipa2me.methods import eng_to_ipa
 
+ROOT = environ.Path(__file__).path('../' * 2)
+ENV = environ.Env(DJANGO_DEBUG=(bool, False), )
+if path.isfile(ROOT('.env')):
+    environ.Env.read_env(ROOT('.env'))
+EMAIL_HOST_USER = ENV('EMAIL_HOST_USER')
 
 class Index(FormView):
     form_class = IndexForm
@@ -25,4 +32,5 @@ class Issues(FormView):
         name = self.request.POST.get('name')
         email = self.request.POST.get('email')
         message = self.request.POST.get('message')
-        return self.render_to_response(self.get_context_data(answer=text))
+        send_mail(f"{name}: {email}", message, EMAIL_HOST_USER, [EMAIL_HOST_USER])
+        return self.render_to_response(self.get_context_data(answer=name.split()[0]))
