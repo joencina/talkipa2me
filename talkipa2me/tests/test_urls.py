@@ -22,6 +22,3 @@ class IndexTest(SimpleTestCase):
         response = self.client.get('/')
         self.assertContains(response, 'Get text in IPA')
 
-    def test_bulma_css(self):
-        response = self.client.get('/static/bulma/css/style.min.css')
-        self.assertEqual(response.status_code, 200)

@@ -4,11 +4,6 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 from pytest import mark
 
 
-def test_true():
-    """When you want a test that definitely should pass"""
-    assert True
-
-
 @mark.django_db()
 def test_admin_response(client):
     response = client.get('/admin/login/')
@@ -18,5 +13,3 @@ def test_admin_response(client):
 @mark.django_db()
 def test_database():
     get_user_model().objects.all().exists()
-
-
