@@ -8,6 +8,7 @@ exclude_lines =
     @abstractmethod
     environ.Env.read_env(ROOT('.env'))
 
+[run]
 omit =
     */wsgi.py
     */settings.py
