@@ -12,6 +12,7 @@ if path.isfile(ROOT('.env')):
     environ.Env.read_env(ROOT('.env'))
 EMAIL_HOST_USER = ENV('EMAIL_HOST_USER')
 
+
 class Index(FormView):
     form_class = IndexForm
     template_name = 'index.html'
