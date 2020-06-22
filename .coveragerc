@@ -6,6 +6,8 @@ exclude_lines =
     raise NotImplementedError
     def __repr__
     @abstractmethod
+    environ.Env.read_env(ROOT('.env'))
+
 omit =
     */wsgi.py
     */settings.py
