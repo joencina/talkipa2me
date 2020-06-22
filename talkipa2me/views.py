@@ -1,7 +1,7 @@
 import environ
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from os import path
 from talkipa2me.forms import IndexForm, IssuesForm
 from talkipa2me.methods import eng_to_ipa
@@ -35,3 +35,7 @@ class Issues(FormView):
         message = self.request.POST.get('message')
         send_mail(f"{name}: {email}", message, EMAIL_HOST_USER, [EMAIL_HOST_USER])
         return self.render_to_response(self.get_context_data(answer=name.split()[0]))
+
+
+class WhatIs(TemplateView):
+    template_name = 'what_is.html'
