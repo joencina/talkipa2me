@@ -2,129 +2,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-  <title>{% block title %}{% endblock title %}</title>
-  {% block css %}
-    {% font_awesome %}
-    <link rel="stylesheet" href="{% static 'bulma/css/style.min.css' %}">
-    {% block extra_css %}{% endblock extra_css %}
-  {% endblock css %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <title>{% block title %}{% endblock title %}</title>
+    {% block css %}
+        {% font_awesome %}
+        <link rel="stylesheet" href="{% static 'bulma/css/style.min.css' %}">
+        {% block extra_css %}{% endblock extra_css %}
+    {% endblock css %}
 </head>
 <body>
 
 {% block header %}
- <div class="container">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="{% url 'home' %}">
-      <img src="{% static 'brand.png' %}" width="112" height="21">
-    </a>
+    <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="{% url 'home' %}">
+                    <img src="{% static 'brand.png' %}" width="112" height="21">
+                </a>
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarContent">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
+                <a role="button" class="navbar-burger burger " aria-label="menu" aria-expanded="false"
+                   data-target="navbarContent">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
 
-  <div id="navbarContent" class="navbar-menu">
-    <div class="navbar-start">
+            <div id="navbarContent" class="navbar-menu">
+                <div class="navbar-start">
 
-      <a class="navbar-item" href="{% url 'what_is' %}">
-        What is IPA?
-      </a>
+                    <a class="navbar-item" href="{% url 'what_is' %}">
+                        What is IPA?
+                    </a>
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
+                    <div class="navbar-item has-dropdown">
+                        <a class="navbar-link">
+                            More
+                        </a>
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://www.ipachart.com/">
-            IPA sounds
-          </a>
-          <a class="navbar-item" href="https://scholar.harvard.edu/files/adam/files/phonetics.ppt.pdf">
-            Harvard slides
-          </a>
-          <a class="navbar-item" href="https://en.wikipedia.org/wiki/Help:IPA/English">
-            Wikipedia article
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" href="https://forvo.com/">
-            Forvo
-          </a>
-        </div>
-      </div>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="https://www.ipachart.com/">
+                                IPA sounds
+                            </a>
+                            <a class="navbar-item"
+                               href="https://scholar.harvard.edu/files/adam/files/phonetics.ppt.pdf">
+                                Harvard slides
+                            </a>
+                            <a class="navbar-item" href="https://en.wikipedia.org/wiki/Help:IPA/English">
+                                Wikipedia article
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" href="https://forvo.com/">
+                                Forvo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary" href="{% url 'issues' %}">
+                                <strong>Report an issue</strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <script type="text/javascript">
+            (function () {
+                let burger = document.querySelector('.burger');
+                let nav = document.querySelector('#' + burger.dataset.target);
+                let dropdown = document.querySelector('.has-dropdown');
+
+                burger.addEventListener('click', function () {
+                    burger.classList.toggle('is-active');
+                    nav.classList.toggle('is-active');
+                });
+                dropdown.addEventListener('click', function () {
+                    dropdown.classList.toggle('is-active');
+
+                });
+            })();
+
+        </script>
     </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary" href="{% url 'issues' %}">
-            <strong>Report an issue</strong>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
- </div>
 {% endblock header %}
 
 {% block hero %}{% endblock hero %}
 
 <section class="section">
-  <div class="container">
-    {% block messages %}
-      {% if messages %}
-        <div class="messages columns is-desktop">
-          <div class="column is-4 is-offset-4">
-            {% for message in messages %}
-              <div class="message {% if message.tags %}is-{{ message.tags|bulma_message_tag }}{% endif %}">
-                <div class="message-body">{{ message }}</div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      {% endif %}
-    {% endblock messages %}
+    <div class="container">
+        {% block messages %}
+            {% if messages %}
+                <div class="messages columns is-desktop">
+                    <div class="column is-4 is-offset-4">
+                        {% for message in messages %}
+                            <div class="message {% if message.tags %}is-{{ message.tags|bulma_message_tag }}{% endif %}">
+                                <div class="message-body">{{ message }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock messages %}
 
-    {% block content_area %}
-      {% block content_title %}{% endblock content_title %}
-      {% block content %}{% endblock content %}
-    {% endblock content_area %}
-  </div>
+        {% block content_area %}
+            {% block content_title %}{% endblock content_title %}
+            {% block content %}{% endblock content %}
+        {% endblock content_area %}
+    </div>
 </section>
 
 {% block modal %}{% endblock modal %}
 
 {% block footer %}
-  <footer class="footer">
-    <div class="container has-text-centered">
-      <div class="content has-text-centered">
-        <p>
-          <strong>Talk IPA 2 Me!</strong> by Joaquín Encina.
-        </p>
-        <p>
-          <a class="icon" href="https://github.com/joencina">
-            <i class="fab fa-github"></i>
-          </a>
-          <a class="icon" href="mailto:joaquinenseg@gmail.com">
-            <i class="fas fa-at"></i>
-          </a>
-          <a class="icon" href="https://www.linkedin.com/in/joaquinencina/">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </p>
-      </div>
-    </div>
-  </footer>
+    <footer class="footer">
+        <div class="container has-text-centered">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Talk IPA 2 Me!</strong> by Joaquín Encina.
+                </p>
+                <p>
+                    <a class="icon" href="https://github.com/joencina">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a class="icon" href="mailto:joaquinenseg@gmail.com">
+                        <i class="fas fa-at"></i>
+                    </a>
+                    <a class="icon" href="https://www.linkedin.com/in/joaquinencina/">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
 {% endblock footer %}
 
 {% block javascript %}
-  {% block extra_javascript %}{% endblock extra_javascript %}
+    {% block extra_javascript %}{% endblock extra_javascript %}
 {% endblock javascript %}
 </body>
 </html>
