@@ -1,5 +1,3 @@
-import unittest
-
 from django.test import SimpleTestCase
 from django.urls import reverse
 
@@ -15,7 +13,6 @@ class IndexTest(SimpleTestCase):
 
     def test_view_uses_correct_template(self):
         response = self.client.get(reverse('home'))
-        self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
 
     def test_home_page_contains_correct_html(self):
@@ -34,7 +31,6 @@ class IssuesTest(SimpleTestCase):
 
     def test_view_uses_correct_template(self):
         response = self.client.get(reverse('issues'))
-        self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'issues.html')
 
     def test_issues_contains_correct_html(self):
@@ -53,7 +49,6 @@ class WhatIsTest(SimpleTestCase):
 
     def test_view_uses_correct_template(self):
         response = self.client.get(reverse('what_is'))
-        self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'what_is.html')
 
     def test_issues_contains_correct_html(self):

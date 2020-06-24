@@ -1,6 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.contrib.staticfiles import finders
-from django.contrib.staticfiles.storage import staticfiles_storage
 from pytest import mark
 
 
