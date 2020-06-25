@@ -18,6 +18,7 @@ class IndexTest(SimpleTestCase):
     def test_home_page_contains_correct_html(self):
         response = self.client.get('/')
         self.assertContains(response, 'Get text in IPA')
+        #TODO: check assetcontains in the docs to see if the status code chekc is redundant
 
 
 class IssuesTest(SimpleTestCase):

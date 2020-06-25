@@ -16,3 +16,5 @@ def eng_to_ipa(text):
     for k, v in reverse_punctuation.items():
         ans = ans.replace(k, v)  # De-modify punctuations
     return ans.capitalize()
+# Rename tu functions.py
+# Test for this

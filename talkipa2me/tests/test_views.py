@@ -9,7 +9,9 @@ class TestIndex(TestCase):
     def test_translation(self):
         response = self.client.post('', {'text_area': 'hello,;. world!'})
         self.assertEqual(response.context["text"], "Həl'oʊ,;. wɜrld!")
-
+# Headless browser // Selenenium -> look up for remote testing Sauce labs
+# Parameterized tests // DDT data driven tests
+# Test functions.py
 
 class TestIssues(TestCase):
     @mark.django_db()
@@ -20,6 +22,7 @@ class TestIssues(TestCase):
         message = 'Test message'
         data = {'name': name, 'email': email, 'subject': subject, 'message': message}
         self.response = self.client.post(reverse_lazy('issues'), data)
+        #mail gun, Amazon SES, sendgrid
 
     def test_renders_answer(self):
         self.assertEqual(self.response.context["answer"], 'Test')
@@ -29,3 +32,4 @@ class TestIssues(TestCase):
 
     def test_correct_subject(self):
         self.assertEqual(mail.outbox[0].subject, 'Test Name: test@email.com')
+

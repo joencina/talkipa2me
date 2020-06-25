@@ -8,6 +8,7 @@ if path.isfile(ROOT('.env')):
     environ.Env.read_env(ROOT('.env'))
 
 SITE_ROOT = ROOT()
+EMAIL_HOST_USER = ENV('EMAIL_HOST_USER')
 
 DEBUG = ENV('DJANGO_DEBUG')
 SECRET_KEY = ENV('DJANGO_SECRET_KEY')
