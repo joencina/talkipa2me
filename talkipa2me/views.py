@@ -1,8 +1,6 @@
-import environ
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView
-from os import path
 from django.conf import settings
 from talkipa2me.forms import IndexForm, IssuesForm
 from talkipa2me.methods import eng_to_ipa
